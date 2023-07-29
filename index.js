@@ -14,12 +14,11 @@ const linkedListFactory = () => {
         while (traversedNode.next != null) {
             traversedNode = traversedNode.next;
         };
-        traversedNode.next = nodeFactory();
-        traversedNode.next.value = value;
+        traversedNode.next = nodeFactory(value);
     };
 
     const prepend = (value) => {
-        // fix
+        headNode = nodeFactory(value, headNode);
     };
 
     const size = () => {
@@ -62,7 +61,14 @@ const linkedListFactory = () => {
     };
 
     const pop = () => {
-        console.log("pop");
+        let currentNode = headNode;
+        let previousNode;
+
+        while (currentNode.next != null) {
+            previousNode = currentNode;
+            currentNode = currentNode.next;
+        }
+        previousNode.next = currentNode.next;
     };
 
     const contains = (value) => {
