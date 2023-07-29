@@ -66,11 +66,38 @@ const linkedListFactory = () => {
     };
 
     const contains = (value) => {
-        console.log("value");
+        let traversedNode = headNode;
+        while (traversedNode.next != null) {
+            if (traversedNode.value === value) {
+                return true;
+            } else {
+                traversedNode = traversedNode.next;
+            }
+        }
+        if (traversedNode.value === value) {
+            return true;
+        } else {
+            return false;
+        }
     };
 
     const find = (value) => {
-        console.log("find");
+        let traversedNode = headNode;
+        let index = 0;
+
+        while (traversedNode.next != null) {
+            if (traversedNode.value === value) {
+                return index++;
+            } else {
+                traversedNode = traversedNode.next;
+                index++;
+            }
+        }
+        if (traversedNode.value === value) {
+            return index;
+        } else {
+            return "The value you are searching for is not in this list.";
+        }
     };
 
     const toString = () => {
